@@ -1,0 +1,33 @@
+{
+  "name": "generator-tfountain-redux-reducer",
+  "version": "0.0.1",
+  "description": "A Yeoman generator for @doches' opinionated redux reducers",
+  "main": "app/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/doches/generator-tfountain-redux-reducer"
+  },
+  "bugs": "https://github.com/doches/generator-tfountain-redux-reducer/issues",
+  "homepage": "https://github.com/doches/generator-tfountain-redux-reducer/",
+  "author": {
+    "name": "Trevor Fountain",
+    "email": "trevor@texasexpat.net",
+    "url": "http://texasexpat.net"
+  },
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "chalk": "^3.0.0",
+    "yeoman-generator": "^4.5.0",
+    "yosay": "^2.0.2"
+  },
+  "files": [
+    "app"
+  ],
+  "keywords": [
+    "yeoman-generator",
+    "typescript",
+    "redux",
+    "frontend"
+  ]
+}
