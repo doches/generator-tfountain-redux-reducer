@@ -16,51 +16,53 @@ export const DEFAULT_<%= pluralAllCaps %>_STATE: I<%= pluralInitialCaps %>State 
   <%= plural %>: [],
 }
 
-export const SET_FETCH_PENDING = "@@<%= plural %>/SET_FETCH_PENDING";
-export const SET_UPDATE_PENDING = "@@<%= plural %>/SET_UPDATE_PENDING";
-export const SET_<%= pluralAllCaps %> = "@@<%= plural %>/SET_<%= pluralAllCaps %>";
-export const ADD_<%= allCaps %> = "@@<%= plural %>/ADD_<%= allCaps %>";
-export const REMOVE_<%= allCaps %> = "@@<%= plural %>/REMOVE_<%= allCaps %>";
-export const UPDATE_<%= allCaps %> = "@@<%= plural %>/UPDATE_<%= allCaps %>";
+export const <%= pluralInitialCaps %>Actions = {
+  SET_FETCH_PENDING: "@@<%= plural %>/SET_FETCH_PENDING",
+  SET_UPDATE_PENDING: "@@<%= plural %>/SET_UPDATE_PENDING",
+  SET_<%= pluralAllCaps %>: "@@<%= plural %>/SET_<%= pluralAllCaps %>",
+  ADD_<%= allCaps %>: "@@<%= plural %>/ADD_<%= allCaps %>",
+  REMOVE_<%= allCaps %>: "@@<%= plural %>/REMOVE_<%= allCaps %>",
+  UPDATE_<%= allCaps %>: "@@<%= plural %>/UPDATE_<%= allCaps %>",
+}
 
 export function setFetchPending(pending: boolean) {
   return {
-      type: SET_FETCH_PENDING,
+      type: <%= pluralInitialCaps %>Actions.SET_FETCH_PENDING,
       pending,
   };
 }
 
 export function setUpdatePending(pending: boolean) {
   return {
-      type: SET_UPDATE_PENDING,
+      type: <%= pluralInitialCaps %>Actions.SET_UPDATE_PENDING,
       pending,
   };
 }
 
 export function set<%= pluralInitialCaps %>(<%= plural %>: I<%= initialCaps %>[]) {
   return {
-      type: SET_<%= pluralAllCaps %>,
+      type: <%= pluralInitialCaps %>Actions.SET_<%= pluralAllCaps %>,
       <%= plural %>,
   };
 }
 
 export function add<%= initialCaps %>(<%= lowercase %>: I<%= initialCaps %>) {
   return {
-      type: ADD_<%= allCaps %>,
+      type: <%= pluralInitialCaps %>Actions.ADD_<%= allCaps %>,
       <%= lowercase %>,
   };
 }
 
 export function remove<%= initialCaps %>(<%= lowercase %>Id: number) {
   return {
-      type: REMOVE_<%= allCaps %>,
+      type: <%= pluralInitialCaps %>Actions.REMOVE_<%= allCaps %>,
       id: <%= lowercase %>Id,
   };
 }
 
 function replace<%= initialCaps %>(<%= lowercase %>: I<%= initialCaps %>) {
   return {
-      type: UPDATE_<%= allCaps %>,
+      type: <%= pluralInitialCaps %>Actions.UPDATE_<%= allCaps %>,
       <%= lowercase %>,
   };
 }
@@ -170,24 +172,24 @@ export function <%= plural %>(state: I<%= pluralInitialCaps %>State, action: any
   switch (action.type) {
     default: 
       return state;
-    case SET_FETCH_PENDING:
+    case <%= pluralInitialCaps %>Actions.SET_FETCH_PENDING:
       return {
         ...state,
         fetchPending: action.pending,
       };
-    case SET_UPDATE_PENDING:
+    case <%= pluralInitialCaps %>Actions.SET_UPDATE_PENDING:
       return {
         ...state,
         updatePending: action.pending,
     };
-    case SET_<%= pluralAllCaps %>:
+    case <%= pluralInitialCaps %>Actions.SET_<%= pluralAllCaps %>:
       return {
         ...state,
         fetchPending: false,
         fetched: true,
         <%= plural %>: action.<%= plural %>,
       };
-    case ADD_<%= allCaps %>:
+    case <%= pluralInitialCaps %>Actions.ADD_<%= allCaps %>:
       return {
         ...state,
         updatePending: false,
@@ -196,13 +198,13 @@ export function <%= plural %>(state: I<%= pluralInitialCaps %>State, action: any
           action.<%= lowercase %>,
         ],
       };
-    case REMOVE_<%= allCaps %>:
+    case <%= pluralInitialCaps %>Actions.REMOVE_<%= allCaps %>:
       return {
         ...state,
         updatePending: false,
         <%= plural %>: state.<%= plural %>.filter((<%= lowercase %>: I<%= initialCaps %>) => <%= lowercase %>.id != action.<%= lowercase %>.id),
       };
-    case UPDATE_<%= allCaps %>:
+    case <%= pluralInitialCaps %>Actions.UPDATE_<%= allCaps %>:
       return {
         ...state,
         updatePending: false,
